@@ -26,9 +26,9 @@ config.apiKey = @"*********";
 SoulSDK *soulSDK = [SoulSDK instance];
 NSString *phoneNumber = @"+79061234567";
 
-[[soulSDK phoneAuth] getCode:phoneNumber success:^(SLPhoneAuthRequest *_Nonnull responseObject) {
+[[soulSDK phoneAuth] getCode:phoneNumber success:^(SLPhoneAuthRequest *_Nonnull response) {
     
-    NSLog(@"Status: %d", responseObject.status);
+    NSLog(@"Status: %d", response.status);
 
 } failure:^(NSError *_Nullable error) {
 
@@ -40,9 +40,9 @@ NSString *phoneNumber = @"+79061234567";
 После проверки полученного кода пользователь будет зарегистрирован
 
 ```obj-c
-[[soulSDK phoneAuth] verify:phoneNumber code:code success:^(SLPhoneAuthVerify *_Nonnull responseObject) {
+[[soulSDK phoneAuth] verify:phoneNumber code:code success:^(SLPhoneAuthVerify *_Nonnull response) {
 
-    NSLog(@"%@ / %@", responseObject.me.userId, responseObject.authorization.sessionToken);
+    NSLog(@"%@ / %@", response.me.userId, response.authorization.sessionToken);
 
 } failure:^(NSError *_Nullable error) {
 
@@ -65,9 +65,9 @@ NSDictionary *filterable = @{
 
 SoulSDK *soulSDK = [SoulSDK instance];
 [[soulSDK me] setFilterableParameters:filterable
-                              success:^(SLMeUserResponse *_Nonnull responseObject) {
+                              success:^(SLMeUserResponse *_Nonnull response) {
 
-                                  NSLog(@"%@", responseObject.me.parameters.filterable);
+                                  NSLog(@"%@", response.me.parameters.filterable);
 
                               }
                               failure:^(NSError *_Nullable error) {
