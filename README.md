@@ -3,7 +3,10 @@ Soul – это mBaaS (mobile backend as a service) облачный серви�
 ## Установка
 Добавьте заголовочный файл в ваше приложение чтобы получить все необходимые классы:
 Include the Firebase header in your app to get all the needed classes:
-    #import <SoulSDK/SoulSDK.h>
+
+```obj-c
+#import <SoulSDK/SoulSDK.h>
+```
 
 ## Использование
 
