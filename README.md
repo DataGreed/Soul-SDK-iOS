@@ -64,17 +64,15 @@ NSDictionary *filterable = @{
                              };
 
 SoulSDK *soulSDK = [SoulSDK instance];
-[[soulSDK me] setFilterableParameters:filterable
-                              success:^(SLMeUserResponse *_Nonnull response) {
+[[soulSDK me] setFilterableParameters:filterable success:^(SLMeUserResponse *_Nonnull response) {
 
-                                  NSLog(@"%@", response.me.parameters.filterable);
+    NSLog(@"%@", response.me.parameters.filterable);
 
-                              }
-                              failure:^(NSError *_Nullable error) {
+} failure:^(NSError *_Nullable error) {
 
-                                  NSLog(@"%@", error);
+    NSLog(@"%@", error);
 
-                              }];
+}];
 ```
 
 ### Загружка фотографии
