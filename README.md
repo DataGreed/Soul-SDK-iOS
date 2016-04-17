@@ -140,7 +140,8 @@ NSNumber *limit = @(20);
 ### Отправка сообщений
 
 ```obj-c
-SLTextMessage *msg = [SLTextMessage messageWithText:@""];
+NSString *text = @"Hello, how are you?";
+SLTextMessage *msg = [SLTextMessage messageWithText:text];
 
 [[sdk chat] sendMessage:msg success:^(SLMessage *_Nonnull msg) {
 
