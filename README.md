@@ -138,7 +138,7 @@ NSNumber *limit = @(20);
 ### Загрузка истории
 
 ```obj-c
-SLChatManager chatManager = [sdk chatManager:chat];
+SLChatManager *chatManager = [sdk chatManager:chat];
 
 [_manager getHistory:^(NSArray <SLTextMessage *> *messages) {
 
@@ -155,7 +155,7 @@ SLChatManager chatManager = [sdk chatManager:chat];
 ### Отправка сообщений
 
 ```obj-c
-SLChatManager chatManager = [sdk chatManager:chat];
+SLChatManager *chatManager = [sdk chatManager:chat];
 NSString *text = @"Hello, how are you?";
 
 [chatManager sendMessage:text success:^(SLTextMessage *message) {
@@ -171,7 +171,7 @@ NSString *text = @"Hello, how are you?";
 ### Получение сообщений
 
 ```obj-c
-SLChatManager chatManager = [sdk chatManager:chat];
+SLChatManager *chatManager = [sdk chatManager:chat];
 chatManager.delegate = self;
 ```
 
