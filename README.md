@@ -104,7 +104,7 @@ NSData *photoData = UIImagePNGRepresentation(image);
 
 ### Поиск партнёров
 
-Для поиска партнёров нужно определить сессию поиска и с каждым запросом передавать новый токен запроса. Если партнёров завершился неудачно, его можно повторить передав тот же токен.
+Для поиска партнёров нужно определить сессию поиска и с каждым запросом передавать новый токен запроса. Если поск партнёров завершился неудачно, его можно повторить передав тот же токен.
 
 ```obj-c
 NSString *session = @"";
@@ -163,7 +163,7 @@ NSNumber *limit = @(20);
 ### Загрузка истории
 
 ```obj-c
-SLChatManager *chatManager = [sdk chatManager:chat];
+SLChatManager *chatManager = [soulSDK chatManager:chat];
 
 [chatManager getHistory:^(NSArray <SLTextMessage *> *messages) {
 
@@ -180,7 +180,7 @@ SLChatManager *chatManager = [sdk chatManager:chat];
 ### Отправка сообщений
 
 ```obj-c
-SLChatManager *chatManager = [sdk chatManager:chat];
+SLChatManager *chatManager = [soulSDK chatManager:chat];
 NSString *text = @"Hello, how are you?";
 
 [chatManager sendMessage:text success:^(SLTextMessage *message) {
@@ -196,7 +196,7 @@ NSString *text = @"Hello, how are you?";
 ### Получение сообщений
 
 ```obj-c
-SLChatManager *chatManager = [sdk chatManager:chat];
+SLChatManager *chatManager = [soulSDK chatManager:chat];
 chatManager.delegate = self;
 ```
 
