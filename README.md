@@ -135,30 +135,50 @@ NSNumber *limit = @(20);
     NSLog(@"%@", error);
 }];
 ```
+### Загрузка истории
+
+```obj-c
+SLChatManager chatManager = [sdk chatManager:chat];
+
+[_manager getHistory:^(NSArray <SLTextMessage *> *messages) {
+
+    for (SLTextMessage *message in messages) {
+        NSLog(@"%@", message.text);
+    }
+
+} failure:^{
+
+    NSLog(@"error");
+}];
+```
 
 ### Отправка сообщений
 
 ```obj-c
+SLChatManager chatManager = [sdk chatManager:chat];
 NSString *text = @"Hello, how are you?";
-SLTextMessage *msg = [SLTextMessage messageWithText:text];
 
-[[sdk chat] sendMessage:msg success:^(SLMessage *_Nonnull msg) {
+[chatManager sendMessage:text success:^(SLTextMessage *message) {
 
-    NSLog(@"%@", msg.text);
+    NSLog(@"%@", message.text);
 
-} failure:^(NSError *_Nullable error) {
+} failure:^{
 
-    NSLog(@"%@", error);
+    NSLog(@"error");
 }];
 ```
 
 ### Получение сообщений
 
 ```obj-c
-SLChatManager *chatManager = [SLChatManager chatByName:chat.channelName];
+SLChatManager chatManager = [sdk chatManager:chat];
+chatManager.delegate = self;
+```
 
-[chatManager subscribe:^(SLMessage *_Nonnull msg) {
+После этого необходимо реализовать протокол `SLChatManagerProtocol`
+```obj-c
+- (void)messageReceived:(SLTextMessage *)message {
 
-    NSLog(@"%@", msg.text);
-}];
+    NSLog(@"%@", message.text);
+}
 ```
