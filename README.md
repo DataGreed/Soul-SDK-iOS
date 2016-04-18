@@ -1,15 +1,14 @@
 Soul – это mBaaS (mobile backend as a service) облачный сервис, позволяющий создавать и эксплуатировать приложения без необходимости написания server-side кода, поднятия собственных серверов и их поддержки. 
 
 ## Установка
+Как подключать библиотеку мы расскажем на хакатоне.
+
+## Использование
 Добавьте заголовочный файл в ваше приложение чтобы получить все необходимые классы:
 
 ```obj-c
 #import <SoulSDK/SoulSDK.h>
 ```
-
-## Использование
-
-Как подключать библиотеку мы расскажем на хакатоне.
 
 ### Инициализация
 
@@ -161,9 +160,5 @@ SLChatManager *chatManager = [SLChatManager chatByName:chat.channelName];
 [chatManager subscribe:^(SLMessage *_Nonnull msg) {
 
     NSLog(@"%@", msg.text);
-
-} failure:^(NSError *_Nullable error) {
-
-    NSLog(@"%@", error);
 }];
 ```
