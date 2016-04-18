@@ -96,6 +96,7 @@ NSData *photoData = UIImagePNGRepresentation(image);
 [[soulSDK album] addPhoto:photoData toAlbum:album.name success:^(SLPhotoResponse * _Nonnull response) {
 
     NSLog(@"%@", response.photo.photoId);
+
 } failure:^(NSError * _Nullable error) {
 
     NSLog(@"error");
