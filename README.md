@@ -140,7 +140,7 @@ NSNumber *limit = @(20);
 ```obj-c
 SLChatManager *chatManager = [sdk chatManager:chat];
 
-[_manager getHistory:^(NSArray <SLTextMessage *> *messages) {
+[chatManager getHistory:^(NSArray <SLTextMessage *> *messages) {
 
     for (SLTextMessage *message in messages) {
         NSLog(@"%@", message.text);
