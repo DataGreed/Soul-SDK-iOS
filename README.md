@@ -63,6 +63,7 @@ NSDictionary *filterable = @{
                              };
 
 SoulSDK *soulSDK = [SoulSDK instance];
+
 [[soulSDK me] setFilterableParameters:filterable success:^(SLMeUserResponse *_Nonnull response) {
 
     NSLog(@"%@", response.me.parameters.filterable);
@@ -72,10 +73,34 @@ SoulSDK *soulSDK = [SoulSDK instance];
     NSLog(@"%@", error);
 }];
 ```
+### Создание альбома
 
+```obj-c
+NSString *albumName = @"Best album ever";
+
+[[soulSDK me] addAlbum:albumName success:^{
+    
+    NSLog(@"success");
+
+} failure:^(NSError * _Nullable error) {
+
+    NSLog(@"%@", error);
+}];
+```
 ### Загрузка фотографии
 
-О создании альбомов и загрузке фтографий мы расскажем немного позже.
+```obj-c
+
+NSData *photoData = UIImagePNGRepresentation(image);
+
+[[soulSDK album] addPhoto:photoData toAlbum:album.name success:^(SLPhotoResponse * _Nonnull response) {
+
+    NSLog(@"%@", response.photo.photoId);
+} failure:^(NSError * _Nullable error) {
+
+    NSLog(@"error");
+}];
+```
 
 ### Поиск партнёров
 
@@ -85,7 +110,7 @@ SoulSDK *soulSDK = [SoulSDK instance];
 NSString *session = @"";
 NSString *token = @"";
 
-[[sdk users] loadBySession:session uniqueToken:token success:^(SLUsersRecsResponse *_Nonnull responce) {
+[soulSDK loadBySession:session uniqueToken:token success:^(SLUsersRecsResponse *_Nonnull responce) {
 
     for (SLUser *user in responce.users) {
     	NSLog(@"%@", user.userId);
@@ -108,7 +133,7 @@ NSString *value = @"disliked";
 NSDate *expiresDate = [NSDate date];
 NSNumber *expiresTime = @([expiresDate timeIntervalSince1970]);
 
-[[sdk user] sendReactionByType:type value:value userId:user.userId expiresTime:expiresTime success:^(SLOtherUserResponse *_Nonnull responce) {
+[[soulSDK user] sendReactionByType:type value:value userId:user.userId expiresTime:expiresTime success:^(SLOtherUserResponse *_Nonnull responce) {
 
     NSLog(@"%@", responce.user.reactions.sentByMe);
 
@@ -124,7 +149,7 @@ NSNumber *expiresTime = @([expiresDate timeIntervalSince1970]);
 SLChat *lastChat = [SLChat new];
 NSNumber *limit = @(20);
 
-[[sdk chats] loadChatsAfter:lastChat.chatId limit:limit success:^(SLChatsMany *_Nonnull responce) {
+[[soulSDK chats] loadChatsAfter:lastChat.chatId limit:limit success:^(SLChatsMany *_Nonnull responce) {
 
     for (SLChat *chat in responce.chats) {
         NSLog(@"%@ / %@", chat.chatId, chat.channelName);
